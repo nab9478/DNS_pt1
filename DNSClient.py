@@ -1,4 +1,3 @@
-import dnspython as dns
 import dns.resolver
 
 # Set the IP address of the local DNS server and a public DNS server
