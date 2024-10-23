@@ -14,7 +14,7 @@ def query_local_dns_server(domain,question_type):
     resolver.nameservers = [local_host_ip]
     answers = resolver.resolve(domain, question_type) # provide the domain and question_type
 
-    ip_address = answers[1].to_text()
+    ip_address = answers[0].to_text()
     return ip_address   
     
 # Define a function to query a public DNS server for the IP address of a given domain name
@@ -24,7 +24,7 @@ def query_dns_server(domain,question_type):
     resolver.nameservers = [real_name_server]
     answers = resolver.resolve(domain, question_type) # provide the domain and question_type
 
-    ip_address = answers[1].to_text()
+    ip_address = answers[0].to_text()
     return ip_address
     
 # Define a function to compare the results from the local and public DNS servers for each domain name in the list
@@ -63,7 +63,7 @@ if __name__ == '__main__':
 
 
     # Call the function to print the results from querying both DNS servers
-    #local_external_DNS_output(question_type)
+    local_external_DNS_output(question_type)
     
     # Call the function to compare the results from both DNS servers and print the result
     result = compare_dns_servers(domainList,question_type)
